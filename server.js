@@ -4,6 +4,12 @@ import * as redis from 'redis';
 const SBS1_HOST = process.env.SBS1_HOST || 'localhost';
 const SBS1_PORT = parseInt(process.env.SBS1_PORT, 10) || 30003;
 const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
+const FLIGHTAWARE_API_KEY = process.env.FLIGHTAWARE_API_KEY;
+
+if (! FLIGHTAWARE_API_KEY) {
+  console.error('You must set the FLIGHTAWARE_API_KEY environment variable!');
+  process.exit(1);
+}
 
 const redisClient = redis.createClient({
   url: REDIS_URL
