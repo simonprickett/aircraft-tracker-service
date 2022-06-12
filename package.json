@@ -1,0 +1,32 @@
+{
+  "name": "aircraft-tracker-service",
+  "version": "0.0.1",
+  "description": "Aircraft Tracker Service using dump1090",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonprickett/aircraft-tracker-service.git"
+  },
+  "keywords": [
+    "dump1090",
+    "redis",
+    "aircraft"
+  ],
+  "type": "module",
+  "author": "Simon Prickett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonprickett/aircraft-tracker-service/issues"
+  },
+  "homepage": "https://github.com/simonprickett/aircraft-tracker-service#readme",
+  "dependencies": {
+    "redis": "^4.1.0",
+    "sbs1": "^0.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
