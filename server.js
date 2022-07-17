@@ -72,6 +72,8 @@ async function updateFlightDetails(hexIdent, callSign) {
           registration: thisFlightData.registration || UNKNOWN_VALUE,
           originIcao: thisFlightData.origin.code_icao || UNKNOWN_VALUE,
           originIata: thisFlightData.origin.code_iata || UNKNOWN_VALUE,
+          destinationIcao: thisFlightData.destination.code_icao || UNKNOWN_VALUE,
+          destinationIata: thisFlightData.destination.code_iata || UNKNOWN_VALUE,
           aircraftType: thisFlightData.aircraft_type || UNKNOWN_VALUE
         };
 
