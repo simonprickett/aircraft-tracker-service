@@ -56,25 +56,22 @@ async function updateFlightDetails(hexIdent, callSign) {
     // code?
     if (response.status === 200) {
       const flightData = await response.json();
-      console.log('FlightAware responded:');
-      console.log(flightData);
-
       const flightKey = getKeyForFlight(hexIdent);
 
       if (flightData && flightData.flights[0]) {
         const thisFlightData = flightData.flights[0];
         const dataToStore = {
-          identIcao: thisFlightData.ident_icao || UNKNOWN_VALUE,
-          identIata: thisFlightData.ident_iata || UNKNOWN_VALUE,
-          operatorIcao: thisFlightData.operator_icao || UNKNOWN_VALUE,
-          operatorIata: thisFlightData.operator_iata || UNKNOWN_VALUE,
-          flightNumber: thisFlightData.flight_number || UNKNOWN_VALUE,
-          registration: thisFlightData.registration || UNKNOWN_VALUE,
-          originIcao: thisFlightData.origin.code_icao || UNKNOWN_VALUE,
-          originIata: thisFlightData.origin.code_iata || UNKNOWN_VALUE,
-          destinationIcao: thisFlightData.destination.code_icao || UNKNOWN_VALUE,
-          destinationIata: thisFlightData.destination.code_iata || UNKNOWN_VALUE,
-          aircraftType: thisFlightData.aircraft_type || UNKNOWN_VALUE
+          identIcao: thisFlightData.ident_icao ?? UNKNOWN_VALUE,
+          identIata: thisFlightData.ident_iata ?? UNKNOWN_VALUE,
+          operatorIcao: thisFlightData.operator_icao ?? UNKNOWN_VALUE,
+          operatorIata: thisFlightData.operator_iata ?? UNKNOWN_VALUE,
+          flightNumber: thisFlightData.flight_number ?? UNKNOWN_VALUE,
+          registration: thisFlightData.registration ?? UNKNOWN_VALUE,
+          originIcao: thisFlightData.origin.code_icao ?? UNKNOWN_VALUE,
+          originIata: thisFlightData.origin.code_iata ?? UNKNOWN_VALUE,
+          destinationIcao: thisFlightData.destination.code_icao ?? UNKNOWN_VALUE,
+          destinationIata: thisFlightData.destination.code_iata ?? UNKNOWN_VALUE,
+          aircraftType: thisFlightData.aircraft_type ?? UNKNOWN_VALUE
         };
 
         console.log(`Storing data for ${hexIdent}:`);
@@ -115,8 +112,6 @@ async function saveFlight(flight) {
   if (callSign && latitude && longitude) {
     if (! hasFlightAware) {
       updateFlightDetails(flight.hexIdent, callSign);
-    } else {
-      console.log(`Skipping FlightAware call for ${callSign} as we have the data.`);
     }
   }  
 }
